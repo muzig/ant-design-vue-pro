@@ -2,7 +2,7 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
-    <a-button>测试</a-button>
+    <a-button @click="onGet">测试</a-button>
   </div>
 </template>
 
@@ -14,6 +14,20 @@ export default {
   name: "Home",
   components: {
     HelloWorld
+  },
+  methods: {
+    onGet() {
+      console.log("ok");
+      var vm = this;
+      vm.$http
+        .get("http://www.baidu.com")
+        .then(function(data) {
+          console.log(data);
+        })
+        .catch(function(resp) {
+          console.log(resp);
+        });
+    }
   }
 };
 </script>
